@@ -18,9 +18,11 @@ TECNOLOGIAS
 BACK-END:
 ● Python com Django
 ● JavaScript
+
 FRONT-END:
 ● HTML5
 ● CSS3
 ● BOOTSTRAP
+
 BANCO DE DADOS:
 ● SQLite
