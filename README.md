@@ -18,8 +18,8 @@ URL: https://github.com/dvdss-dev/Estoque_de_Produtos
 
 TECNOLOGIAS
 BACK-END:
-● Python / Django
-● JavaScript / Ajax
+● PYTHON / DJANGO
+● JAVASCRIPT / AJAX
 
 FRONT-END:
 ● HTML5
