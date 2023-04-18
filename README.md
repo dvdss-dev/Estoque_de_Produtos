@@ -13,17 +13,16 @@ REQUISITOS
 BOARD
 URL: https://github.com/users/dvdss-dev/projects/1/views/1
 
-GitHub
+GITHUB
 URL: https://github.com/dvdss-dev/Estoque_de_Produtos
 
 TECNOLOGIAS
 BACK-END:
-● Python com Django
-● JavaScript
+● Python / Django
+● JavaScript / Ajax
 
 FRONT-END:
 ● HTML5
-● CSS3
 ● BOOTSTRAP
 
 BANCO DE DADOS:
