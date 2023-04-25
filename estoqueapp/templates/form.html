@@ -14,13 +14,16 @@
             <a href="/" class="btn btn-info">Voltar</a>
         </div>
         <div class="col-8 m-auto pt-4 pb-2 text-center">
+            <div class="result"></div>
             <form name="form" action="{% if db %}/update/{{db.id}}/{%else%}/create/{% endif %}" method="post">
                 {% csrf_token %}
-                <div class="form-group mt-4">Nome: {{form.nome}}</div>
-                <div class="form-group mt-4">Tipo: {{form.tipo}}</div>
-                <div class="form-group mt-4">Quantidade: {{form.qnt}}</div>
+                <div class="form-group mt-4">Nome:</br> {{form.nome}}</div>
+                <div class="form-group mt-4">Tipo:</br> {{form.tipo}}</div>
+                <div class="form-group mt-4">Quantidade:</br> {{form.qnt}}</div>
                 <p><input type="submit" class="btn btn-success mt-4" value="Salvar"></p>
             </form>
         </div>
+        {% load static %}
+        <script src="{% static 'javascript.js' %}"></script>
     </body>
 </html>
