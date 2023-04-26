@@ -7,7 +7,7 @@ Software para Estoque de Produtos
 REQUISITOS
 1. O sistema deve cadastrar e listar todos os produtos: ✔ https://youtu.be/9zmALYmOQGo
 2. O sistema deve realizar alterações dos produtos. ✔ https://youtu.be/7rJ7ZlrS7ig
-3. O sistema deve realizar a exclusão dos produtos.
+3. O sistema deve realizar a exclusão dos produtos. ✔ https://youtu.be/BEj8nigdyvQ
 4. O sistema deve realizar buscas dos produtos.
 
 BOARD
