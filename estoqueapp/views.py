@@ -1,11 +1,20 @@
 from django.shortcuts import render, redirect
 from estoqueapp.forms import ItensForm
 from estoqueapp.models import Itens
+from django.core.paginator import Paginator
 
 # Create your views here.
 def home(request):
     dados = {}
-    dados['db'] = Itens.objects.all()
+    search = request.GET.get('search')
+    if search:
+        dados['db'] = Itens.objects.filter(nome__icontains=search)
+    else:
+        dados['db'] = Itens.objects.all()
+    all = dados['db'] = Itens.objects.get_queryset().order_by('id')
+    paginator = Paginator(all, 5)
+    pages = request.GET.get('page')
+    dados['db'] = paginator.get_page(pages)
     return render(request, 'index.html', dados)
 
 def form(request):
