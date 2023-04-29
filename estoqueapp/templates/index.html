@@ -45,22 +45,7 @@
                 {% endfor %}
                 </tbody>
             </table>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
-                    {% if db.has_previous %}
-                    <li class="page-item text-dark">
-                        <a class="page-link text-dark" href="?page={{db.previous_page_number}}" tabindex="-1">Anterior</a>
-                    </li>
-                    {% endif %}
-                    <li class="page-item text-dark"><a class="page-link text-dark" href="#">{{db.number}}</a></li>
-                    {% if db.has_next %}
-                    <li class="page-item text-dark">
-                        <a class="page-link text-dark" href="?page={{db.next_page_number}}">Proxima</a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </nav>
             {% load static %}
-        <script src="{% static 'javascript.js' %}"></script>
+            <script src="{% static 'javascript.js' %}"></script>
     </body>
 </html>

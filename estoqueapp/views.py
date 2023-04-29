@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from estoqueapp.forms import ItensForm
 from estoqueapp.models import Itens
-from django.core.paginator import Paginator
 
 # Create your views here.
 def home(request):
@@ -11,10 +10,6 @@ def home(request):
         dados['db'] = Itens.objects.filter(nome__icontains=search)
     else:
         dados['db'] = Itens.objects.all()
-    all = dados['db'] = Itens.objects.get_queryset().order_by('id')
-    paginator = Paginator(all, 5)
-    pages = request.GET.get('page')
-    dados['db'] = paginator.get_page(pages)
     return render(request, 'index.html', dados)
 
 def form(request):
@@ -23,7 +18,7 @@ def form(request):
     return render(request, 'form.html', dados)
 
 def create(request):
-    form= ItensForm(request.POST or None)
+    form = ItensForm(request.POST or None)
     if form.is_valid():
         form.save()
         return redirect('home')
