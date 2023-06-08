@@ -11,10 +11,10 @@ REQUISITOS
 4. O sistema deve realizar buscas dos produtos. ✔ https://youtu.be/_Gn1rGUgyB8
 
 BOARD
-URL: https://github.com/users/dvdss-dev/projects/1/views/1
+URL: https://github.com/users/ssdvd/projects/1
 
 GITHUB
-URL: https://github.com/dvdss-dev/Estoque_de_Produtos
+URL: https://github.com/ssdvd/Estoque_de_Produtos
 
 TECNOLOGIAS
 BACK-END:
