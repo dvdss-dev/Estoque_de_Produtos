@@ -1,10 +1,8 @@
-##Projeto Impacta
+##########Projeto Impacta##########
 
-##Software Product: Analysis, Specification, Project
+Software Product: Analysis, Specification, Project
 
-David Santana de Sousa - ADS 5A EAD - RA: 2101651
-
-Software para Estoque de Produtos
+Software para controle de produtos simples
 
 REQUISITOS
 1. O sistema deve cadastrar e listar todos os produtos: ✔ https://youtu.be/9zmALYmOQGo
