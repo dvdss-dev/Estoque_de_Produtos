@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-h==kbx8636+f+fs_(ba21)%*q@khvm@w=b3mc4(9c*tzc47l3y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'estoqueproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'appdjango',
+        'PORT': '3306',
+        'HOST': 'appdjango.cuouo1jdeiwd.us-east-2.rds.amazonaws.com',
+        'USER': 'root',
+        'PASSWORD': '123456789',
     }
 }
 
