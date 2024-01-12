@@ -1,10 +1,15 @@
 - hosts: automatiza-projeto
   tasks:
-  - name: Instalando o pyhton3, virtualenv
+  - name: Instalando o pyhton3, virtualenv e depedencias mysql
     apt:
       pkg:
       - python3
       - virtualenv
+      - libmysqlclient-dev
+      - libssl-dev
+      - libffi-dev
+      - python3-dev
+      - pkg-config
       update_cache: yes
     become: true
 
@@ -17,8 +22,8 @@
 
   - name: Instalando dependencias com pip
     pip:
-      virtualenv: /home/ubuntu/djangoapp/app-cadastro-django/venv
-      requirements: /home/ubuntu/djangoapp/app-cadastro-django/requirements.txt
+      virtualenv: /home/ubuntu/djangoapp/venv
+      requirements: /home/ubuntu/djangoapp/requirements.txt
 
   - name: iniciando o servidor
-    shell: '. /home/ubuntu/djangoapp/app-cadastro-django/venv/bin/activate; nohup python3 /home/ubuntu/djangoapp/app-cadastro-django/manage.py runserver 0.0.0.0/8000 &' 
+    shell: 'source /home/ubuntu/djangoapp/venv/bin/activate; nohup python3 /home/ubuntu/djangoapp/manage.py runserver 0.0.0.0:8000 &' 
