@@ -1,12 +1,11 @@
 from django.shortcuts import render, redirect
 from estoqueapp.forms import ItensForm
 from estoqueapp.models import Itens
-import os
-from django.http import HttpResponse
+from django.shortcuts import render
 
-def obter_nome_servidor(request):
-    nome_servidor = os.environ.get('SERVER_NAME', 'Desconhecido')
-    return HttpResponse(f"Nome do Servidor: {nome_servidor}")
+def index(request):
+    nome_host = request.get_host()
+    return render(request, 'index.html', {'nome_host': nome_host})
 
 
 # Create your views here.
