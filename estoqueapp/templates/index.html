@@ -46,16 +46,6 @@
                 </tbody>
             </table>
             {% load static %}
-            <script src="{% static 'javascript.js' %}"></script>
-            
-            <p>O nome do host é: <span id="nomeHost">{{nomeHost}}</span></p>
-            <script>
-                // Obtenha o nome do host passado do lado do servidor
-                var nomeHost = "{{nome_host}}";
-                
-                // Atualize o conteúdo do elemento com id "nomeHost" com o nome do host
-                document.getElementById('nomeHost').innerText = nomeHost;
-            </script>
-        
+            <script src="{% static 'javascript.js' %}"></script>        
     </body>
 </html>

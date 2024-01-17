@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from estoqueapp.views import home, form, create, view, edit, update, delete, index
+from estoqueapp.views import home, form, create, view, edit, update, delete
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,6 +27,5 @@ urlpatterns = [
     path('edit/<int:pk>/', edit, name='edit'),
     path('update/<int:pk>/', update, name='update'),
     path('delete/<int:pk>/', delete, name='delete'),
-    path('', index, name='index'),
-
 ]
+

@@ -1,14 +1,7 @@
 from django.shortcuts import render, redirect
 from estoqueapp.forms import ItensForm
 from estoqueapp.models import Itens
-from django.shortcuts import render
 
-def index(request):
-    nome_host = request.get_host()
-    return render(request, 'index.html', {'nome_host': nome_host})
-
-
-# Create your views here.
 def home(request):
     dados = {}
     search = request.GET.get('search')
