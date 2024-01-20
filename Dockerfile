@@ -13,6 +13,6 @@ RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r /home/ubuntu/djangoapp/requirements.txt
 
 # Executa as migrações e inicia o servidor quando o contêiner for iniciado
-ENTRYPOINT python manage.py runserver 0.0.0.0:8000
+ENTRYPOINT python /home/ubuntu/djangoapp/manage.py runserver 0.0.0.0:8000
 
 EXPOSE 8000
