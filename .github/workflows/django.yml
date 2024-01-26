@@ -1,0 +1,48 @@
+name: Django CI
+
+on:
+  push:
+    branches: [ "actions-ecs" ]
+  pull_request:
+    branches: [ "actions-ecs" ]
+
+jobs:
+  testes:
+
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setando Python 
+      uses: actions/setup-python@v3
+      with:
+        python-version: 3.10
+
+    - name: Instalando Dependencias
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Rodando Testes
+      run: |
+        python manage.py test
+
+  server:
+    needs: testes
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setando Python 
+      uses: actions/setup-python@v3
+      with:
+        python-version: 3.10
+
+    - name: Instalando Dependencias
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Rodando Server
+      run: |
+        nohup python manage.py runserver 0.0.0.0:8000 &
