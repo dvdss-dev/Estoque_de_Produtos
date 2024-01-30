@@ -77,11 +77,11 @@ WSGI_APPLICATION = 'estoqueproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'appdjango',
-        'PORT': '3306',
-        'HOST': 'appdjango.cuouo1jdeiwd.us-east-2.rds.amazonaws.com',
-        'USER': 'root',
-        'PASSWORD': '123456789',
+        'NAME': os.environ.get('DB_NAME'),
+        'PORT': os.environ.get('DB_PORT'),
+        'HOST': os.environ.get('DB_HOST'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
     }
 }
 

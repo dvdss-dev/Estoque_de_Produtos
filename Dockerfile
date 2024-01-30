@@ -4,6 +4,8 @@ FROM python:3.10
 # Define o diretório de trabalho no contêiner
 WORKDIR /home/ubuntu/djangoapp
 
+ENV DB_NAME=appdjango DB_PORT=3306 DB_HOST=appdjango.cuouo1jdeiwd.us-east-2.rds.amazonaws.com DB_USER=root DB_PASSWORD=123456789
+
 # Copia o arquivo requirements.txt para o diretório de trabalho
 COPY . /home/ubuntu/djangoapp
 
