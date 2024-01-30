@@ -1,4 +1,4 @@
-name: Django CI
+name: djangoapp CI
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Setando Python 
       uses: actions/setup-python@v3
@@ -46,3 +46,7 @@ jobs:
     - name: Rodando Server
       run: |
         nohup python manage.py runserver 0.0.0.0:8000 &
+
+  docker:
+    needs: server
+    uses: ./.github/workflows/docker.yml
