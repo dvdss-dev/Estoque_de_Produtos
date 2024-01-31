@@ -1,7 +1,7 @@
-name: d
+name: docker
 
 on:
-  push:
+  workflow_call:
 
 jobs:
   buildx:
@@ -18,3 +18,11 @@ jobs:
         with:
             username: ${{ secrets.DOCKERHUB_USERNAME }}
             password: ${{ secrets.DOCKERHUB_TOKEN }}
+      
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v5.1.0
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ssdvd/djangoapp:${{github.ref_name}}

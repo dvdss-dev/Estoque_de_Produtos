@@ -1,4 +1,4 @@
-name: djangoapp CI
+name: djangoapp
 
 on:
   push:
@@ -50,3 +50,4 @@ jobs:
   docker:
     needs: server
     uses: ./.github/workflows/docker.yml
+    secrets: inherit
