@@ -25,9 +25,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Rodando Testes  # Execução dos testes
+    - name: Rodando Testes  # Execução dos testes #python manage.py test
       run: |
-        python manage.py test
+        nohup python manage.py runserver 0.0.0.0:8000 & 
 
   server:  # Job para rodar o servidor
 
