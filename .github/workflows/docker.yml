@@ -1,28 +1,31 @@
-name: docker
+name: docker  # Nome do seu workflow, neste caso, "docker"
 
+# Define quando o workflow será acionado
 on:
-  workflow_call:
+  workflow_call:  # Aciona o workflow quando é chamado por outro workflow
 
+# Define os jobs a serem executados
 jobs:
-  buildx:
-    runs-on: ubuntu-latest
+  buildx:  # Job para construir e enviar imagens Docker usando Buildx
+
+    runs-on: ubuntu-latest  # Usa a última versão do Ubuntu para rodar este job
     steps:
-      - name: Checkout
+      - name: Checkout  # Passo para realizar checkout do repositório
         uses: actions/checkout@v4
 
-      - name: Set up Docker Buildx
+      - name: Set up Docker Buildx  # Configuração do Buildx para Docker
         uses: docker/setup-buildx-action@v3
 
-      - name: Login to Docker Hub
+      - name: Login to Docker Hub  # Autenticação no Docker Hub
         uses: docker/login-action@v3
         with:
-            username: ${{ secrets.DOCKERHUB_USERNAME }}
-            password: ${{ secrets.DOCKERHUB_TOKEN }}
+            username: ${{ secrets.DOCKERHUB_USERNAME }}  # Utiliza o nome de usuário do Docker Hub armazenado nos segredos
+            password: ${{ secrets.DOCKERHUB_TOKEN }}  # Utiliza o token de acesso do Docker Hub armazenado nos segredos
       
-      - name: Build and push Docker images
+      - name: Build and push Docker images  # Constrói e envia as imagens Docker
         uses: docker/build-push-action@v5.1.0
         with:
-          context: .
-          file: ./Dockerfile
-          push: true
-          tags: ssdvd/djangoapp:${{github.ref_name}}
+          context: .  # Define o contexto para o build (diretório atual)
+          file: ./Dockerfile  # Especifica o caminho para o Dockerfile
+          push: true  # Indica que as imagens devem ser enviadas para o repositório
+          tags: ssdvd/djangoapp:${{github.ref_name}}  # Define as tags para as imagens Docker

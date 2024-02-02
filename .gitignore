@@ -153,3 +153,8 @@ cython_debug/
 
 # nohup Details
 nohup.out
+
+# .idea
+*.idea/*
+.idea*/
+.idea/

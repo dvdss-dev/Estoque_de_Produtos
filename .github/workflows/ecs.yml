@@ -1,20 +1,44 @@
-name: ecs
+name: ecs  # Nome do seu workflow, neste caso, "ecs"
 
-# QUANDO SERÁ EXECUTADO: NA CHAMADA DO ARQUIVO
+# Define quando o workflow será acionado
 on:
-  workflow_call:
+  workflow_call:  # Aciona o workflow quando é chamado por outro workflow
 
 # TAREFAS
 jobs:
-  ecs:
-    runs-on: ubuntu-latest
+  ecs:  # Job para implantar no Amazon ECS
+
+    runs-on: ubuntu-latest  # Usa a última versão do Ubuntu para rodar este job
     steps:
-      - name: Autenticando credenciais AWS
+      - name: Autenticando credenciais AWS  # Configuração das credenciais AWS
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}  # Utiliza a chave de acesso AWS armazenada nos segredos
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}  # Utiliza a chave secreta AWS armazenada nos segredos
+          aws-region: us-east-1  # Define a região da AWS
 
-      - name: OBTER ARQUIVO DA TASK
-        run: aws ecs describe-task-definition --task-definition task-api-go --query taskDefinition > task-definition.json
+      - name: OBTER ARQUIVO DA TASK  # Obtém o arquivo da definição de tarefa do Amazon ECS
+        run: aws ecs describe-task-definition --task-definition task-djangoapp --query taskDefinition > task-definition.json
+
+      - name: Fill in the new image ID in the Amazon ECS task definition  # Preenche o ID da nova imagem na definição de tarefa do Amazon ECS
+        id: task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: task-definition.json  # Especifica o caminho para o arquivo da definição de tarefa
+          container-name: djangoapp  # Nome do contêiner
+          image: ssdvd/djangoapp:actions-ecs  # Define a nova imagem Docker para o contêiner
+          environment-variables: |  # Define as variáveis de ambiente para o contêiner
+            HOST=${{ secrets.DB_HOST }}
+            USER=${{ secrets.DB_USER }}
+            PASSWORD=${{ secrets.DB_PASSWORD }}
+            DBNAME=${{ secrets.DB_NAME }}
+            DBPORT=${{ secrets.DB_PORT }}
+            PORT=8000
+
+      - name: Deploy Amazon ECS task definition  # Implanta a definição de tarefa no Amazon ECS
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def.outputs.task-definition }}  # Obtém a definição de tarefa gerada anteriormente
+          service: service_djangoapp  # Nome do serviço no ECS
+          cluster: djangoapp  # Nome do cluster no ECS
+          wait-for-service-stability: true  # Aguarda até que o serviço esteja estável antes de concluir
