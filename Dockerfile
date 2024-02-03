@@ -5,11 +5,11 @@ FROM python:3.10
 WORKDIR /home/ubuntu/djangoapp
 
 # Define variáveis de ambiente para configuração do banco de dados
-ENV DB_NAME=${{ secrets.DB_NAME }} \
-    DB_PORT=${{ secrets.DB_PORT }} \
-    DB_HOST=${{ secrets.DB_HOST }} \
-    DB_USER=${{ secrets.DB_USER }} \
-    DB_PASSWORD=${{ secrets.DB_PASSWORD }}
+ENV DB_NAME \
+    DB_PORT \
+    DB_HOST \
+    DB_USER \
+    DB_PASSWORD
 
 # Copia o arquivo requirements.txt para o diretório de trabalho
 COPY . /home/ubuntu/djangoapp

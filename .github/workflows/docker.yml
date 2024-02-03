@@ -9,6 +9,13 @@ jobs:
   buildx:  # Job para construir e enviar imagens Docker usando Buildx
 
     runs-on: ubuntu-latest  # Usa a última versão do Ubuntu para rodar este job
+    env:
+      DB_NAME: ${{ secrets.DB_NAME }}
+      DB_PORT: ${{ secrets.DB_PORT }}
+      DB_HOST: ${{ secrets.DB_HOST }}
+      DB_USER: ${{ secrets.DB_USER }}
+      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+    
     steps:
       - name: Checkout  # Passo para realizar checkout do repositório
         uses: actions/checkout@v4
