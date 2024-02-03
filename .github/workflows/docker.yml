@@ -35,4 +35,4 @@ jobs:
           context: .  # Define o contexto para o build (diretório atual)
           file: ./Dockerfile  # Especifica o caminho para o Dockerfile
           push: true  # Indica que as imagens devem ser enviadas para o repositório
-          tags: ssdvd/djangoapp:${{github.ref_name}}  # Define as tags para as imagens Docker
+          tags: ssdvd/djangoapp:${{github.run_number}}  # Define as tags para as imagens Docker
