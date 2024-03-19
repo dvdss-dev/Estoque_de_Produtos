@@ -9,29 +9,8 @@ on:
 
 # Define os jobs que serão executados
 jobs:
-  testes:  # Job para executar os testes
-
-    runs-on: ubuntu-latest  # Usa a última versão do Ubuntu para rodar este job
-    steps:
-    - uses: actions/checkout@v4  # Passo para realizar checkout do repositório
-
-    - name: Setando Python  # Configuração do ambiente Python
-      uses: actions/setup-python@v3
-      with:
-        python-version: 3.10.12  # Utiliza a versão 3.10.12 do Python
-
-    - name: Instalando Dependencias  # Instalação das dependências do projeto
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-
-    - name: Rodando Testes  # Execução dos testes #python manage.py test
-      run: |
-        nohup python manage.py runserver 0.0.0.0:8000 & 
-
   server:  # Job para rodar o servidor
 
-    needs: testes  # Dependência do job 'testes', ou seja, este job só é executado se 'testes' for bem-sucedido
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
